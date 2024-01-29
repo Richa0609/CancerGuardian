@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colon Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .upload-form input[type="file"] {
+            border: 2px dashed #aaa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .upload-form input[type="file"]:hover {
+            border-color: #007bff;
+        }
+        .upload-form input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .upload-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .prediction {
+            margin-top: 20px;
+        }
+        .prediction h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .prediction img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Colon Cancer Prediction</h1>
+        <form class="upload-form" action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction %}
+        <div class="prediction">
+            <h2>Prediction: {{ prediction }}</h2>
+            <h2>Confidence: {{ confidence }}%</h2>
+            <img src="{{ image_path }}" alt="Uploaded Image">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
